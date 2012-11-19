@@ -4,7 +4,10 @@ EMAIL=zonk1024@gmail.com
 
 # check for mutt if on debian/ubuntu
 if uname -a | grep -qiE 'debian|ubuntu'; then
-  dpkg -l | grep -q '^ii  mutt ' || echo -e "You must have the package 'mutt' installed."
+  if dpkg -l | grep -q '^ii  mutt '; then
+    echo "You must have the package 'mutt' installed."
+    exit 1
+  fi
 fi
 
 # move to /
